@@ -1,0 +1,31 @@
+<div ng-controller="editFestivalCtrl">
+	<h1>Edit festival</h1>
+	<form>
+		<label for="name">Naziv</label>
+		<input ng-model="festival.naziv" id="name">
+		<button ng-click="add()">dodaj u listu</button>
+	</form>
+	
+	<table class="table table-bordered table-striped">
+		<thead>
+			<tr>
+				<th style="border:none">Naziv</th>
+				<th style="border:none">Organizator</th>
+				<th style="border:none">Mesto</th>
+				<th style="border:none">Cena karte</th>
+				<th style="border:none">Kolicina karata</th>
+				<th style="border:none">Datum Pocetka</th>
+	     	</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="f in festivaliEdit  track by $index">
+				<td style="border:none">{{f.naziv}}</td>
+				<td style="border:none">{{f.organizator}}</td>
+				<td style="border:none">{{f.mestoNaziv}}</td>
+				<td style="border:none">{{f.cenaKarte}}</td>
+				<td style="border:none">{{f.kolicinaNaStanju}}</td>
+				<td style="border:none">{{f.datumPocetka}}</td>
+				<td style="border:none"><button class="btn btn-warning" ng-click="edit()">sacuvaj</button></td>
+			</tr>
+		</tbody>
+</div>

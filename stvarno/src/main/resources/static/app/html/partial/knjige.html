@@ -1,0 +1,94 @@
+<div ng-controller="knjigeCtrl">
+
+<div class="page-header">
+		<h1>Knjige</h1>
+	</div>
+
+
+<form>
+		<div class="form-group">
+			<label for="naziv">Naziv</label>
+			<input class="form-control" id="naziv" placeholder="naziv" ng-model="novaKnjiga.naziv">
+		</div>
+		<div class="form-group">
+			<label for="organizator">Izdanje</label>
+			<input class="form-control" id="organizator" placeholder="Izdanje" ng-model="novaKnjiga.izdanje">
+		</div>
+		<div class="form-group">
+			<label for="datumPocetka">Pisac</label>
+			<input class="form-control" id="datumPocetka" placeholder="Pisac" ng-model="novaKnjiga.pisac">
+		</div>
+		<div class="form-group">
+			<label for="cenaKarte">ISBN</label>
+			<input class="form-control" id="cenaKarte" placeholder="ISBN" ng-model="novaKnjiga.isbn">
+		</div>
+		<div class="form-group">
+			<label for="mesto">Izdavac</label>
+			<select class="form-control" id="mesto" ng-model="novaKnjiga.izdavacId">
+				<option ng-repeat="iz in izdavaci" value="{{iz.id}}">
+					{{iz.naziv}}
+				</option>
+			</select>
+		</div>
+		<button class="btn btn-primary" ng-click="dodaj()">Dodaj</button>
+	
+	</form>
+
+<form>
+	<div class="form-group">
+			<label for="fnaziv">Naziv</label>
+			<input class="form-control" id="fnaziv" ng-model="pretraga.naziv">
+		</div>
+	<div class="form-group">
+			<label for="max">Pisac</label>
+			<input class="form-control" id="max"  ng-model="pretraga.pisac">
+		</div>
+	<div class="form-group">
+			<label for="maxa">Min glasova</label>
+			<input class="form-control" id="maxa"  ng-model="pretraga.minGlasova">
+		</div>
+	
+	
+	
+	<button class="btn btn-primary" ng-click="filtriraj()">Filtriraj</button>
+	
+	
+	
+	</form>
+
+Naziv knjige sa najvecim brojem glasova je {{knjigee.naziv}}
+<br>
+
+
+<div class="btn-group" style="margin-left:80%">
+		<button ng-disabled="page == 0" ng-click="go(-1)" class="btn btn-primary">Prethodna</button>
+		<button ng-disabled="page == totalPages - 1" ng-click="go(1)" class="btn btn-primary">Sledeća</button>
+	</div>
+	<table class="table table-bordered table-striped">
+		<thead>
+			<tr>
+				<th style="border:none">Naziv</th>
+				<th style="border:none">Izdanje</th>
+				<th style="border:none">Pisac</th>
+				<th style="border:none">Broj glasova</th>
+				<th style="border:none">Naziv izdavaca</th>
+				
+	     	</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="k in knjige">
+				<td style="border:none">{{k.naziv}}</td>
+				<td style="border:none">{{k.izdanje}}</td>
+				<td style="border:none">{{k.pisac}}</td>
+				<td style="border:none">{{k.brojGlasova}}</td>
+				<td style="border:none">{{k.izdavacNaziv}}</td>
+			
+				<td style="border:none"><button class="btn btn-danger" ng-click="obrisi(k.id)">Obrisi</button></td>
+				<td style="border:none"><button class="btn btn-warning" ng-click="goToEdit(k.id)">Izmeni</button></td>
+				<td style="border:none"><button class="btn btn-primary" ng-click="kupi(k.id)">+1</button></td>
+			</tr>
+		</tbody>
+	</table>
+
+
+</div>

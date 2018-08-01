@@ -1,0 +1,7 @@
+.table-striped > thead{
+  background-color: #99969b;
+}
+
+.table-striped > tbody > tr:nth-of-type(even) {
+  background-color: #99969b;
+}

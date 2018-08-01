@@ -1,0 +1,104 @@
+<div  ng-controller="kolaCtrl">
+
+<div class="page-header">
+		<h1>Automobili</h1>
+	</div>
+
+<form>
+		<div class="form-group">
+			<label for="naziv">Model</label>
+			<input class="form-control" id="naziv" placeholder="model" ng-model="novoAuto.model">
+		</div>
+		<div class="form-group">
+			<label for="organizator">Registracija</label>
+			<input class="form-control" id="organizator" placeholder="Registracija" ng-model="novoAuto.registracija">
+		</div>
+		<div class="form-group">
+			<label for="datumPocetka">Godiste</label>
+			<input class="form-control" id="datumPocetka" placeholder="Godiste" ng-model="novoAuto.godiste">
+		</div>
+		<div class="form-group">
+			<label for="cenaKarte">Potrosnja</label>
+			<input class="form-control" id="cenaKarte" placeholder="Potrosnja" ng-model="novoAuto.potrosnja">
+		</div>
+		<div class="form-group">
+			<label for="mesto">Kompanija</label>
+			<select class="form-control" id="mesto" ng-model="novoAuto.kompanijaId">
+				<option ng-repeat="k in kompanije" value="{{k.id}}">
+					{{k.naziv}}
+				</option>
+			</select>
+		</div>
+		<button class="btn btn-primary" ng-click="dodaj()">Dodaj</button>
+	
+	</form>
+
+	<div class="form-group">
+			<label for="afnaziv">Model</label>
+			<input class="form-control" id="afnaziv" ng-model="pretraga.model">
+		</div>
+	<div class="form-group">
+			<label for="amax">Godiste od:</label>
+			<input class="form-control" id="amax"  ng-model="pretraga.godiste">
+		</div>
+			<div class="form-group">
+			<label for="amax">Potrosnja do:</label>
+			<input class="form-control" id="amax"  ng-model="pretraga.potrosnja">
+		</div>
+	<div class="form-group">
+			<label for="amesto">Kompanija</label>
+			<select class="form-control" id="amesto" ng-model="pretraga.dajId">
+				
+				<option value="">~Any~</option>
+				<option ng-repeat="ka in kompanije" value="{{ka.id}}">
+					{{ka.naziv}}
+				</option>
+				
+			</select>
+		</div>
+		
+	<div class="form-group">
+			<label for="amax1">Sadrzaj prikazan</label>
+			<input class="form-control" id="amax1"  ng-model="pretraga.velicina">
+		</div>
+		
+	<button class="btn btn-primary" ng-click="filtriraj()">Filtriraj</button>
+	<button class="btn btn-primary" ng-click="reset()">Reset</button>
+	<button class="btn btn-primary" ng-click="pretraziMe()">search</button>
+<br>
+<br>
+
+ <span ng-show="bre">Auto sa najmanjom potrosnjom : {{autaa.model}}</span>
+<div class="btn-group" style="margin-left:80%">
+		<button ng-disabled="page == 0" ng-click="go(-1)" class="btn btn-primary">Prethodna</button>
+		<button ng-disabled="page == totalPages - 1" ng-click="go(1)" class="btn btn-primary">Sledeća</button>
+	</div>
+	<table class="table table-bordered table-striped">
+		<thead>
+			<tr>
+				<th style="border:none">Model</th>
+				<th style="border:none">Registracija</th>
+				<th style="border:none">Godiste</th>
+				<th style="border:none">Potrosnja</th>
+				<th style="border:none">Kompanija</th>
+			
+	     	</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="a in auta">
+				<td style="border:none">{{a.model}}</td>
+				<td style="border:none">{{a.registracija}}</td>
+				<td style="border:none">{{a.godiste}}</td>
+				<td style="border:none">{{a.potrosnja}}</td>
+				<td style="border:none">{{a.kompanijaNaziv}}</td>
+			
+				<td style="border:none"><button class="btn btn-danger" ng-click="obrisi(a.id)">Obrisi</button></td>
+				<td style="border:none"><button class="btn btn-warning" ng-click="goToEdit(a.id)">Izmeni</button></td>
+				<td style="border:none"><button class="btn btn-primary" ng-disabled="a.iznajmljen" ng-click="iznajmi(a.id)">iznajmi</button></td>
+			</tr>
+		</tbody>
+	</table>
+
+
+
+</div>

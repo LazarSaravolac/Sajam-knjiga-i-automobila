@@ -1,0 +1,26 @@
+<div ng-controller="editKnjigeCtrl">
+	<h1>Izmeni knjige</h1>
+	
+	<form>
+		<div class="form-group">
+			<label for="naziv">Naziv</label>
+			<input class="form-control" id="naziv" placeholder="naziv" ng-model="novaKnjigaEdit.naziv">
+		</div>
+		<div class="form-group">
+			<label for="organizator">Izdanje</label>
+			<input class="form-control" id="organizator" placeholder="Izdanje" ng-model="novaKnjigaEdit.izdanje">
+		</div>
+		<div class="form-group">
+			<label for="datumPocetka">Pisac</label>
+			<input class="form-control" id="datumPocetka" placeholder="Pisac" ng-model="novaKnjigaEdit.pisac">
+		</div>
+		<div class="form-group">
+			<label for="cenaKarte">ISBN</label>
+			<input class="form-control" id="cenaKarte" placeholder="ISBN" ng-model="novaKnjigaEdit.isbn">
+		</div>
+		
+		<button class="btn btn-primary" ng-click="izmena()">Izmeni</button>
+	
+	</form>
+	
+</div>
